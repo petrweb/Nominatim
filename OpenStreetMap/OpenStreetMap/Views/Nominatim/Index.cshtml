@@ -1,0 +1,61 @@
+﻿@model OpenStreetMap.Models.CoordinateViewModel
+
+@{
+    ViewBag.Title = "Reverzní překlad GPS na adresu";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+    
+    <div class="form-horizontal">
+        <h4>Nový dotaz</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">
+                Výsledek dotazu
+            </span>
+            <div class="col-md-10">
+               <div id="Result"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <Button id="SendQuery" class="btn btn-default" >Odeslat dotaz</Button>
+            </div>
+        </div>
+    </div>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+
+<script src="~/Scripts/NominatimAjax.js"></script>
