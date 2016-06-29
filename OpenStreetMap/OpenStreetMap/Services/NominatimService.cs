@@ -32,6 +32,7 @@ namespace OpenStreetMap.Services
              responseRoot = JsonConvert.DeserializeObject<NominatimResponseRoot>(response.Content.ReadAsStringAsync().Result);
              return true;
          }
+         client.Dispose();
      }
      /// <summary>
      /// Metoda pro mapování objektu získaného z Nominatimu na objekt Adress. Před užitím volejte metodu GetData();
